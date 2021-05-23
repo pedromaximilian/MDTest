@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-   //definicion de variables
+   //definicion de variables para api
    const key ="6c5c6ac9f550755964cccfe701e605e2"
    const idioma= "es"
    const pais="ar"
@@ -9,7 +9,7 @@ $(document).ready(function() {
    const busqueda = ""
    const apiUrl = "http://api.mediastack.com/v1/news?access_key="+key+"&keywords="+busqueda+"&languages="+idioma+"&countries="+pais+"&limit="+limit+"&offset="+offset
 
-   //inicializar datatables y setear las columnas
+   //inicializar datatables, setear las columnas
       $('#noticias').DataTable({
          ajax: {
          url: apiUrl,
@@ -20,9 +20,10 @@ $(document).ready(function() {
          { data: "title" },
          { data: "description" },
       ],
+
     })  
    
-   //se quita el evento default de search
+   //se quita el evento default de search para optimizar busqueda
    $('.dataTables_filter input').unbind().keyup(); 
    //se agrega un nuevo evento a la tecla enter
    $('.dataTables_filter input').keypress(function(e) { 
